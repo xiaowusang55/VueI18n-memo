@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+        <p>{{ $n(100, 'currency') }}</p>
+        <p>{{ $n(100, 'currency', 'ja-JP') }}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+
+    <script>
+        // Ready translated locale messages
+        const numberFormats = {
+            'en-US': {
+                currency: {
+                    style: 'currency',
+                    currency: 'USD'
+                }
+            },
+            'ja-JP': {
+                currency: {
+                    style: 'currency',
+                    currency: 'JPY',
+                    currencyDisplay: 'symbol'
+                }
+            }
+        }
+
+        // Create VueI18n instance with options
+        const i18n = new VueI18n({
+            numberFormats
+        })
+
+
+        // Create a Vue instance with `i18n` option
+        new Vue({
+            i18n
+        }).$mount('#app')
+    </script>
+
+
+</body>
+
+</html>
