@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <p v-cloak>{{ $t("message.hello",[ 'love you' ]) }}</p>
+        <p v-cloak>{{ $t("message.hello",{'0': 'クッソ野郎'}) }}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+
+    <script>
+
+        // Ready translated locale messages
+        const messages = {
+            en: {
+                message: {
+                    hello: '{0} world'
+                }
+            },
+            ja: {
+                message: {
+                    hello: 'こんにちは、{0}'
+                }
+            }
+        }
+
+        // Create VueI18n instance with options
+        const i18n = new VueI18n({
+            locale: 'ja', // set locale
+            messages, // set locale messages
+        })
+
+
+        // Create a Vue instance with `i18n` option
+        new Vue({
+            i18n
+        }).$mount('#app')
+
+
+    </script>
+
+
+</body>
+
+</html>
